@@ -1,0 +1,189 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #f1f1f1;
+}
+
+ /*boxShadow8*/
+.box-shadow-coupon {
+    background-color: white;
+    width: 100%;
+  
+    margin: 3em 1em;
+    padding: 3em;
+    box-shadow: 0 0 5px 1px rgba(221, 221, 221, 1);
+    text-align: center;
+}
+
+/*boxCupon*/
+.box-coupon {
+    background-color: white;
+    width: 100%;
+    padding: 0em 0em;
+    box-shadow: 0 0 5px 1px rgba(221, 221, 221, 1);
+    text-align: center;
+    margin: 2em 0em;
+}
+
+/*boxCuponText*/
+.box-coupon-text{
+    padding: 3em 0;
+}
+
+/*boxCuponImage*/
+.box-coupon-image {
+    padding: 2em 1em;
+}
+
+/*boxCuponButton*/
+.box-coupon-button {
+    padding: 3em 1em;
+}
+
+/*boxCollapse*/
+.box-collapse {
+    width: 100%;
+    border-top: 1px solid #f1f1f1;
+    background-color: #FAFAF9;
+    padding: 0.5em 1em;
+
+}
+
+/*buttonDetails  */
+.button-details {
+    color: #24b7e3;
+}
+
+.button-details:hover {
+    color: #24b7e3;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+/*collapseMy*/
+.collapse-block {
+   
+    background-color: white;
+    border: 1px solid #f1f1f1;
+    padding: 1em 1em;
+   // overflow-y: scroll;
+    max-height: 45em;
+    margin-top: 0.5em;
+}
+
+/*menulinkColor*/
+.menu-link-color:hover{
+    color: white !important;
+    border-bottom: 0.1em solid white;
+}
+
+.menu-link-color{
+ 
+     border-bottom: 0.1em solid #343a40;
+    
+}
+button{
+    cursor: pointer;
+}
+
+/*shopText*/
+.shop-text a{
+    font-size: 1.2em;
+    font-weight: 600;
+    color: black;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+
+.no-hover{
+    cursor: pointer;
+    background-color: #e9ecef;
+    color: #1865b9;
+
+
+}
+
+no-hover:hover{
+    background-color: #e9ecef;
+    color: #1865b9;
+}
+.discount{
+    font-size: 3em ;
+    font-weight: 600;
+}
+.footer, .push {
+    height: 50px; /* .push must be the same height as .footer */
+}
+
+.my-text-left{
+    padding-left: 0.5em;
+}
+
+.ddd{
+    color: red;
+}
+
+/**********************************/
+
+@media (max-width: 768px){
+
+    .box-coupon {
+    background-color: white;
+    width: 100%;
+    padding: 0em 0em;
+    box-shadow: 0 0 5px 1px rgba(221, 221, 221, 1);
+    text-align: center;
+    margin: 1em 0em;
+}
+
+.box-coupon-text{
+    padding: 0.5em 0;
+}
+    
+    .box-coupon-text h4{
+        font-size: 1em;
+    }
+
+.box-coupon-image {
+    padding-top: 1em;
+    padding-bottom: 0;
+}
+
+.box-coupon-button {
+    padding-top: 0;
+    padding-bottom: 1em;
+}
+
+.box-collapse {
+    width: 100%;
+    border-top: 1px solid #f1f1f1;
+    background-color: #FAFAF9;
+    padding: 0.5em 1em;
+}
+
+.button-details {
+    color: #24b7e3;
+}
+
+.button-details:hover {
+    color: #24b7e3;
+}
+    
+    .container .my-4{
+        font-size: 1.2em;
+        
+    }
+
+}
+
+
