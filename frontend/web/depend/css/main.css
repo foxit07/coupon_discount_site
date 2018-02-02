@@ -39,7 +39,7 @@ body {
 
 /*boxCuponButton*/
 .box-coupon-button {
-    padding: 3em 1em;
+    padding: 3em 0em;
 }
 
 /*boxCollapse*/
@@ -118,7 +118,7 @@ no-hover:hover{
     color: #1865b9;
 }
 .discount{
-    font-size: 3em ;
+    font-size: 2.5em ;
     font-weight: 600;
 }
 .footer, .push {
@@ -133,9 +133,27 @@ no-hover:hover{
     color: red;
 }
 
+.compname:hover{
+	padding: 5px;
+	color: white;
+	background-color: #007bff;
+}
+
+/*********************************/
+
+@media (max-width: 1200px){
+
+.discount{
+    font-size: 2.2em ;
+    font-weight: 600;
+}
+
+}
+
 /**********************************/
 
 @media (max-width: 768px){
+
 
     .box-coupon {
     background-color: white;

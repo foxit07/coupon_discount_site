@@ -16,6 +16,15 @@ use Yii;
 class KuponController extends Controller
 {
 
+   public function actionAuth()
+{
+	$coupon = new Coupon();
+	$coupon->connectToAdmitad();
+
+	 return $this->render('auth');
+
+}
+
     public function actionIndex()
     {
 

@@ -17,7 +17,7 @@
        </div>
        <h4><?= $coupon['name']?></h4>
        <p> Скопируйте промокод и перейдите на сайт для активации </p>
-       <a href="<?=$coupon['goto_link']?>"><?=preg_replace('#https?://([a-z0-9-]+\.[a-z]{2,3})/?.+#','$1',$coupon['campaign']['site_url']);?></a>
+       <a style="font-size:22px;" href="<?=$coupon['goto_link']?>"><?=preg_replace('#https?://([a-z0-9-]+\.[a-z]{2,3})/?.+#','$1',$coupon['campaign']['site_url']);?> </a>
 
    </div>
    <!-- Modal body -->
@@ -31,9 +31,9 @@
          </div>
      </div>
      <!-- Modal footer -->
-     <div class="modal-footer">
+     <div class="text-left" style="padding: 10px;">
          <p><b>Условия:</b>
-             <?= $coupon['description']?>"
+             <?= $coupon['description']?>
    </p>
      </div>
      <div class="modal-footer">

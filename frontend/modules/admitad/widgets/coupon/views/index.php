@@ -30,22 +30,21 @@ $clps = 0;
 <?php if($coupon): ?>
     <?php foreach ($coupon as $value=>$key): ?>
         <div class="row box-coupon">
-            <div class="col-lg-2  box-coupon-image ">
+            <div class="col-md-4 col-lg-2   box-coupon-image">
                     <?php
                     if ($blockcollg2left=='image') {
                         echo  '<a data-pjax="0" href=' . Url::to(['/admitad/kupon/company/', 'company' => StringHelper::companyName($key['campaign']['name']) ]) . '>';
                         echo '<img src=' . $key['image'] . '>';
                         echo   '</a>';
                     }elseif ($blockcollg2left=='discount'){
-
                       echo Html::tag('div',$key['discount'] ,['class'=>'discount']);
                     }
                     ?>
             </div>
-            <div class="col-lg-7  box-coupon-text ">
+            <div class="col-md-4 col-lg-7   box-coupon-text">
                 <h4><?= $key['name'] ?> </h4>
             </div>
-            <div class="col-lg-3 box-coupon-button">
+            <div class="col-md-4 col-lg-3 box-coupon-button">
                 <a href="" class="btn btn-primary"
                     <?= 'data-id=' . $key['id'] ?>
                     <?= 'data-type=' . $typeDiscount[$value]['type'] ?>>

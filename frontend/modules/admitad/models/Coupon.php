@@ -13,33 +13,45 @@ use yii\db\Query;
 use Yii;
 use yii\web\HttpException;
 use yii\web\Response;
+use Admitad\Api\Api;
+
 class Coupon extends Model
 {
 
-    private const DURATION_CACHE = 1800;
+ private const DURATION_CACHE =3600;
     private $admitad;
     private $limit=500;
     private $offset=0;
     private $region='RU';
     private $order_by='-rating';
-    private $uri='/coupons/website/495007/';
-    private $scope='coupons '.'coupons_for_website ';
+    private $uri='/coupons/website/759678/';
+    private $scope='coupons '.'coupons_for_website '.'public_data '.'manage_websites '.'websites ';
     private $key_1='coupon';
     private $key_2='image';
     private $key_3='company';
     private $key_4='letter';
-
-    private function connectToAdmitad()
+   
+   private $clientId = 'c43bc2a73cf44fb4b29b13be03a9a3';
+   private $clientSecret = 'fe87c1897aa8ad8b43c81e9ee043be';
+   private $redirectUri='https://abens.ru/';
+   private $username = 'foxit77';
+   private $password = '4CApv5omBf';	
+  
+  public function connectToAdmitad()
     {
-        if($this->admitad= new Connection($this->scope)){
-            return true;
-        };
+	
+        $api = new Api();
+	$authorizeResult = $api->authorizeClient($this->clientId, $this->clientSecret, $this->scope)->getArrayResult();
+        $this->admitad=new Api($authorizeResult['access_token']);
+
+	return true;	
     }
 
     private function setCache()
-    {
+    {	
+
        Yii::$app->cache->flush();
-      if( $this->connectToAdmitad()) {
+      if($this->connectToAdmitad()) {
           Yii::$app->cache->set($this->key_1, $this->getCouponsToAdmitad(), self::DURATION_CACHE);
           Yii::$app->cache->set($this->key_2, $this->getImageCouponAdmitad(), self::DURATION_CACHE);
           Yii::$app->cache->set($this->key_3, $this->getCompanyCouponAdmitad(), self::DURATION_CACHE);
@@ -66,6 +78,12 @@ class Coupon extends Model
                 $couponResults[]=$value;
             }
         }
+
+	 foreach ($couponResults as &$value){
+            $value['image']=$this->pathImage($value['image'],$value['campaign']['name']);
+        }
+        unset($value);
+
         return $couponResults;
     }
 
@@ -89,6 +107,26 @@ class Coupon extends Model
         $image=$this->unique_multidim_array($image, 'image');
         sort($image);
         return  $image;
+    }
+
+ private function pathImage($path, $name)
+    {
+
+        $file = file_get_contents($path);
+        $rootPath=Yii::getAlias('@webroot');
+       // $name=trim(mb_strtolower($name));
+        $fileName=mb_strrichr($path,'/');
+        $pathSave=$rootPath . '/images/'. hash('md5',$name);  // $name;
+        if(!file_exists($pathSave)){
+            mkdir($pathSave);
+        }
+
+        $fullPath=$pathSave . $fileName;
+        file_put_contents($fullPath ,$file);
+
+        $pos=mb_strlen(Yii::getAlias('@webroot'));
+        $path=mb_substr( $fullPath,$pos);
+        return $path;
     }
 
     private function unique_multidim_array($array, $key)
@@ -116,7 +154,7 @@ class Coupon extends Model
         }
         $company=array_unique($company);
         foreach ($company as $value){
-            $companyName[]=preg_replace('#([a-zа-яё]+)([\s\.]+)([a-z\sа-яё]+)#iu','$1',$value);
+            $companyName[]=$value;//   preg_replace('#([a-zа-яё]+)([\s\.]+)([a-z\sа-яё]+)#iu','$1',$value);
         }
         sort($companyName);
         return $companyName;
@@ -125,11 +163,10 @@ class Coupon extends Model
     private function getFirstLetterCompanyCouponAdmitad()
     {
         $company=Yii::$app->cache->get($this->key_3);
-        foreach ($company as $value){
-            $letter[]=($value{0});
+	foreach ($company as $value){
+            $letter[]=mb_strtoupper(mb_substr($value,0,1));
         }
         $letter=array_unique($letter);
-
         return $letter;
     }
 
@@ -192,7 +229,10 @@ class Coupon extends Model
     public function getImage()
     {
         $this->stateCache();
-        return Yii::$app->cache->get($this->key_2);
+       $image=Yii::$app->cache->get($this->key_2);
+	shuffle($image);
+	$image=array_slice($image,0,7);
+	 return $image;// Yii::$app->cache->get($this->key_2);
     }
 
     public function getCompany()

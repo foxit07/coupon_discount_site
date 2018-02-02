@@ -12,10 +12,11 @@ use yii\helpers\ArrayHelper;
 
 class Connection extends Api
 {
-    private $clientId = '';
-    private $clientPassword = '';
-    private $username = '';
-    private $password = '';
+
+    private $clientId = 'c43bc2a73cf44fb4b29b13be03a9a3';
+    private $clientPassword = 'fe87c1897aa8ad8b43c81e9ee043be';
+    private $username = 'foxit77';
+    private $password = '4CApv5omBf';
     private $token = null;
     public $scope ='coupons '.'coupons_for_website ';
 
@@ -39,6 +40,11 @@ class Connection extends Api
         )->getArrayResult();
         $this->token = ArrayHelper::toArray($connect)['access_token'];
         $this->setAccessToken($this->token);
-    }
+    
+
+
+//print_r($connect);die;
+}
+
 
 }

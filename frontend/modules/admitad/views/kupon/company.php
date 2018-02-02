@@ -18,7 +18,7 @@ use frontend\modules\admitad\widgets\modal\Modal;
     <?php endif; ?>
 </div>
 
-<div class="col-lg-9 ">
+<div class="col-lg-9 " >
 
         <?= Coupon::widget([
                 'coupon' => $couponCompany,
@@ -33,3 +33,21 @@ use frontend\modules\admitad\widgets\modal\Modal;
         echo Modal::widget(['coupon'=>$couponId]);
     }
     ?>
+
+
+<style>
+
+
+.btn-primary{
+	width: 160px;
+	font-size: 1em;
+	padding: 7px 0px;
+}
+
+.discount{
+	padding-top: 10px;
+	vertical-align: middle;
+	font-size: 2em;
+}
+
+</style>

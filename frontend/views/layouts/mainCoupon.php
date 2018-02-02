@@ -18,6 +18,7 @@ use frontend\modules\admitad\models\forms\CategoryProduct;
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="/logo/favicon.png" type="image/x-icon" />
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -27,7 +28,9 @@ use frontend\modules\admitad\models\forms\CategoryProduct;
 <div class="wrapper">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top menuLink">
         <div class="container">
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+           <a class="navbar-brand" href="https://abens.ru/">
+			<img src="/logo/abens.png"/ height=35px >
+		</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

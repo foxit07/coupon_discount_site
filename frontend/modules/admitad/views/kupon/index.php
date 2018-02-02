@@ -25,10 +25,10 @@ use frontend\components\StringHelper;
 
     <div class="row">
         <div class="container">
-            <div class="autoplay">
+            <div class="autoplay" >
                 <?php for($i=0; $i<count($image); $i++): ?>
-                  <?php   echo  '<a  class="box-shadow-coupon"  href=' . Url::to(['/admitad/kupon/company/', 'company' => StringHelper::companyName($image[$i]['company_name']) ]) . '>';?>
-                <img src=<?= $image[$i]['image'] ?> alt="" class="img-figure">
+                  <?php echo '<a class="box-shadow-coupon " href=' . Url::to(['/admitad/kupon/company/', 'company' => StringHelper::companyName($image[$i]['company_name']) ]) . '>';?>
+                <img src=<?= $image[$i]['image'] ?> class="img-figure" width="100%" >
                 <?php echo '</a>'; ?>
                 <?php endfor; ?>
             </div>
